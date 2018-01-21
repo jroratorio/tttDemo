@@ -1,0 +1,36 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
+
+.ttt-centered {
+    text-align: center;
+}
+
+.ttt-btn {
+    margin: 20px 0px 20px 0px;
+}
+
+.table-head {
+    background-color: rgba(0, 0, 0, 0.075);    
+}
+
+.table-head th {
+    width: 50%;
+}
+
+.table-container {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+
