@@ -3,29 +3,33 @@
 	<head>
 		<title><%= title %></title>
 		<link rel='stylesheet' href='/stylesheets/style.css' />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
-		<script src="https://code.angularjs.org/1.6.7/angular-animate.min.js"></script>
+		<script src="/javascripts/dirPagination.js"></script>
 		<script src="/javascripts/main.js"></script>
 	</head>
 	
 	<body>
-		<div class="ttt-centered">
+		<div class="table-container ttt-centered">
 			<div>
 				<h1><%= title %></h1>
 			</div>			
 			<p>Welcome to <%= title %></p>
+			<a class="text-primary" href="https://github.com/jroratorio/tttDemo">https://github.com/jroratorio/tttDemo</a>
+			<hr />
+			<p class="text-muted">
+				Enter a positive integer N which will retrieve the N most frequently occuring words from a text file at the url <a class="text-primary" href="http://terriblytinytales.com/test.txt">http://terriblytinytales.com/test.txt</a>
+			</p>
 		</div>
 		
 		<div ng-controller="mainController">
-			<form ng-submit="getResults()" class="ttt-centered">
-				<input autofocus class="ttt-centered form-control col-centered col-lg-4" type="number" ng-model="num" min="1">
+			<form ng-submit="(num > 0) && getResults()" class="table-container ttt-centered">
+				<input autofocus placeholder="{{ placeholder }}" class="ttt-centered form-control col-centered col-lg-4" type="number" ng-model="num" min="1">
 				<input ng-hide="loading" class="ttt-btn btn btn-default btn-primary btn-md" type="submit" value="Click for results">
-				<p ng-show="!(num > 0)" class="col-centered alert alert-warning">Entered number should be positive</p>
+				<p ng-hide="(num === '' || num > 0)" class="ttt-btn col-centered alert alert-warning">Entered number should be positive</p>
 				<p><img class="ttt-btn" src="images/loading.gif" ng-show="loading"></p>
 			</form>
-
 
 			<div class="table-container">
 				<table class="table table-bordered w3-animate-opacity" ng-cloak>
@@ -33,11 +37,17 @@
 						<th class="ttt-centered ">Word</th>
 						<th class="ttt-centered">Frequency</th>
 					</tr>
-					<tr ng-repeat="element in data.data" class="w3-animate-opacity">
+					<tr dir-paginate="element in data.data | itemsPerPage:5" class="w3-animate-opacity">
 						<td class="ttt-centered w3-container w3-center w3-animate-left">{{ element.name }}</td>
 						<td class="ttt-centered w3-container w3-center w3-animate-left">{{ element.total }}</td>					
-					</tr>
+					</tr>					
 				</table>
+				
+				<div class="ttt-centered">
+					<dir-pagination-controls max-size = "5" direction-links = "true" boundary-links = "true" ></dir-pagination-controls>
+				</div>
+				
+				
 			</div>
 		</div>	
 	</body>

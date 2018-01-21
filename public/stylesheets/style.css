@@ -17,7 +17,8 @@ a {
 }
 
 .ttt-btn {
-    margin: 20px 0px 20px 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .table-head {
@@ -29,8 +30,8 @@ a {
 }
 
 .table-container {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 
