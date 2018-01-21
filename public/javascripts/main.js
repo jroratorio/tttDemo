@@ -25,6 +25,8 @@ tttApp.controller("mainController", ["$scope", "$http", "getResultService", func
     
     $scope.placeholder = 'Enter a number';
     
+    $scope.itemsPerPage = 5;
+    
     var url = '/api/' + $scope.num;
     
     $scope.$watch('num', function(){
