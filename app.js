@@ -64,7 +64,7 @@ app.use(function(err, req, res, next) {
 
     // render the error page or send json error response
     res.status(err.status || 500);
-    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+    if (req.xhr) {
         res.send({ status: err.status, error: res.locals.message });
     } else {
         res.render('error', { status: 404, data: "Resource not found" });
