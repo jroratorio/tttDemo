@@ -1,8 +1,9 @@
 var supertest = require("supertest");
 var should = require("should");
+var config = require('./config/test-config.json');
 
 // This agent refers to PORT where program is runninng.
-var server = supertest.agent("http://localhost:3000");
+var server = supertest.agent(config.development.baseUrl);
 
 // UNIT test begin
 describe("URL Test suite",function(){
